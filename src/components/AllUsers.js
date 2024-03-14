@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import UserProfile from "./UserProfile";
 const userDetailsList = [
   {
@@ -27,12 +28,20 @@ const userDetailsList = [
 ];
 
 const AllUsers = () => {
+  const [allUsers, setAllUsers] = useState(userDetailsList);
+
+  const deletUser=(uniqNo)=>{
+    let newUsersList = allUsers.filter(eachuser=> eachuser.uniqueNo !== uniqNo)
+    setAllUsers(newUsersList)
+  }
+
+
   return (
     <div className="container-fluid">
       <div className="row ">
         <div className="col-12 col-md-6 col-lg-4 d-flex flex-column jutify-content-center align-items-center ">
-          {userDetailsList.map((eachItem) => (
-            <UserProfile key={eachItem.uniqueNo} userDetails={eachItem} />
+          {allUsers.map((eachItem) => (
+            <UserProfile key={eachItem.uniqueNo} userDetails={eachItem} deleteFun={deletUser}/>
           ))}
         </div>
       </div>
