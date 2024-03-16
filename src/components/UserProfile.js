@@ -11,7 +11,7 @@ const UserProfile = (props) => {
       <h1>{name}</h1>
       <p>{role}</p>
       <img src={imageUrl} className="w-25" alt="ImageUrl" />
-      <button className="btn btn-primary m-3" onClick={deleteItem}>Delete</button>
+      <button className="btn btn-primary m-3" onClick={deleteItem}> <i class="ri-delete-bin-line"></i></button>
     </div>
   );
 };
